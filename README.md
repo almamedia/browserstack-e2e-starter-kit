@@ -1,6 +1,8 @@
 BrowserStack e2e starter with WebDriverIO & MochaJS
 ===================================================
 
+*Work in progress*
+
 
 Features
 --------
