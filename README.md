@@ -13,11 +13,15 @@ Installation & usage
 --------------------
 
 - Requires [NodeJS](http://nodejs.org/) `v0.10` or newer
+
 - Install [MochaJS](http://visionmedia.github.io/mocha) globally:
+
   ```sh
   sudo npm install -g mocha
   ```
+
 - Then install local depedencies
+
   ```sh
   npm install
   ```
@@ -45,7 +49,9 @@ Which outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia
 For testing against local headless PhantomJS browser you must:
 
 - Install [PhantomJS](http://phantomjs.org/download.html)
+
 - Download [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html)
+
 - Run the Selenium Standalone server:
 
   ```sh
