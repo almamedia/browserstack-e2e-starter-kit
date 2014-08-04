@@ -47,10 +47,13 @@ For testing against local headless PhantomJS browser you must:
 - Install [PhantomJS](http://phantomjs.org/download.html)
 - Download [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html)
 - Run the Selenium Standalone server:
+
   ```sh
   java -jar selenium-server-standalone-2.42.1.jar
   ```
+
 - Run the tests with:
+
   ```sh
   HEADLESS_PHANTOM=true mocha --reporter=spec
   ```
