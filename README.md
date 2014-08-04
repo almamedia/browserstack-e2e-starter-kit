@@ -23,10 +23,10 @@ Installation & usage
 
 - Configure your BrowserStack username and access key:
 
-```bash
-export BROWSERSTACK_USERNAME=<your-browserstack-username>
-export BROWSERSTACK_ACCESS_KEY=<your-secret-browserstack-access-key>
-```
+  ```bash
+  export BROWSERSTACK_USERNAME=<your-browserstack-username>
+  export BROWSERSTACK_ACCESS_KEY=<your-secret-browserstack-access-key>
+  ```
 
 ### Running tests locally
 ```sh
