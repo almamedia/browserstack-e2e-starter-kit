@@ -1,3 +1,4 @@
 /screenshots
 /node_modules
 phantomjsdriver.log
+selenium-server-standalone*
