@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter=spec"
+    "test": "mocha test/spechelper.js --reporter=spec --timeout=600000"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^1.9.1",
-    "webdriverjs": "^1.7.1",
+    "webdriverjs": "webdriverio/webdriverio#4363a4d787ecf4e61f18f3f96ad96c3fce2f0d5b",
     "mocha": "^1.20.0",
     "yargs": "^1.2.2",
     "chalk": "^0.4.0",
@@ -18,5 +18,9 @@
     "rimraf": "^2.2.8",
     "glob": "^4.0.0",
     "slugify": "^0.1.0"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "async": "^0.9.0"
   }
 }
