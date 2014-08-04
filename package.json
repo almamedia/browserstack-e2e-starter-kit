@@ -6,8 +6,8 @@
   "scripts": {
     "test": "mocha --reporter=xunit"
   },
-  "engines" : {
-    "node" : ">=0.10.26"
+  "engines": {
+    "node": ">=0.10.26"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "glob": "^4.0.0",
     "slugify": "^0.1.0",
     "lodash": "^2.4.1",
-    "async": "^0.9.0"
+    "async": "^0.9.0",
+    "shelljs": "^0.3.0"
   }
 }
