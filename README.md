@@ -37,7 +37,7 @@ mocha --reporter=spec
 ```sh
 npm test
 ```
-Which outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia.org/wiki/XUnit).
+This outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia.org/wiki/XUnit).
 
 
 PhantomJS
