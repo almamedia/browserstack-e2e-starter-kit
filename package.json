@@ -4,22 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter=spec"
+    "test": "mocha --reporter=xunit"
+  },
+  "engines" : {
+    "node" : ">=0.10.26"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "chai": "^1.9.1",
     "webdriverjs": "webdriverio/webdriverio#4363a4d787ecf4e61f18f3f96ad96c3fce2f0d5b",
     "mocha": "^1.20.0",
-    "yargs": "^1.2.2",
-    "chalk": "^0.4.0",
     "change-case": "^2.1.1",
     "rimraf": "^2.2.8",
     "glob": "^4.0.0",
-    "slugify": "^0.1.0"
-  },
-  "dependencies": {
+    "slugify": "^0.1.0",
     "lodash": "^2.4.1",
     "async": "^0.9.0"
   }
