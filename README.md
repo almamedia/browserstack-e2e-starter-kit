@@ -42,7 +42,7 @@ Which outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia
 
 ### PhantomJS
 
-For testing against local headless PhantomJS browser you must have
+For testing against local headless PhantomJS browser you must:
 
 - Install [PhantomJS](http://phantomjs.org/download.html)
 - Download [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html)
