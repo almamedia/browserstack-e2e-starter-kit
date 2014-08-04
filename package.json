@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/spechelper.js --reporter=spec --timeout=600000"
+    "test": "mocha --reporter=spec"
   },
   "author": "",
   "license": "ISC",
