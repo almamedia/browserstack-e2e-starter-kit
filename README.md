@@ -34,10 +34,11 @@ export BROWSERSTACK_ACCESS_KEY=<your-secret-browserstack-access-key>
 mocha --reporter=spec
 ```
 
-#### CI
+#### Continuous Integration
 ```sh
 npm test
 ```
+Which outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia.org/wiki/XUnit).
 
 ### PhantomJS
 
