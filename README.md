@@ -65,5 +65,6 @@ For testing against local headless PhantomJS browser (without using BrowserStack
 Todo
 ----
 - Separate test suites from setup code
+- Separate browser configs to ext json file
 - One file per test suite
 
