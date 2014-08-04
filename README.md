@@ -1,12 +1,7 @@
-BrowserStack e2e starter with WebDriverIO & MochaJS
-===================================================
+BrowserStack e2e starter
+========================
 
-*Work in progress*
-
-
-Features
---------
-Test either againt various browsers available at [BrowserStack](http://browserstack.com) or locally against PhantomJS. Uses [WebDriverIO](http://webdriver.io/) for communicating with Selenium/BrowserStack.
+Test either againt multiple browsers available at [BrowserStack](http://browserstack.com) or locally against PhantomJS. Uses [WebDriverIO](http://webdriver.io/) for communicating with Selenium/BrowserStack.
 
 
 Installation & usage
@@ -26,27 +21,29 @@ Installation & usage
   npm install
   ```
 
-### BrowserStack config
+- Configure your BrowserStack username and access key:
 
 ```bash
 export BROWSERSTACK_USERNAME=<your-browserstack-username>
 export BROWSERSTACK_ACCESS_KEY=<your-secret-browserstack-access-key>
 ```
 
-#### Local
+### Running tests locally
 ```sh
 mocha --reporter=spec
 ```
 
-#### Continuous Integration
+### Running tests on Continuous Integration
 ```sh
 npm test
 ```
 Which outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia.org/wiki/XUnit).
 
-### PhantomJS
 
-For testing against local headless PhantomJS browser you must:
+PhantomJS
+---------
+
+For testing against local headless PhantomJS browser (without using BrowserStack) you must:
 
 - Install [PhantomJS](http://phantomjs.org/download.html)
 
