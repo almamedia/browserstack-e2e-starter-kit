@@ -6,30 +6,57 @@ BrowserStack e2e starter with WebDriverIO & MochaJS
 
 Features
 --------
-Test either locally against PhantomJS (or any local browser) or againt various browsers available at [BrowserStack](http://browserstack.com).
+Test either againt various browsers available at [BrowserStack](http://browserstack.com) or locally against PhantomJS.
 
 
-Requirements
-------------
-- PhantomJS and Selenium Standalone for local testing
-- BrowserStack username and access key for BrowserStack testing
+Installation & usage
+--------------------
 
+- Requires [NodeJS](http://nodejs.org/) `v0.10` or newer
+- Install [MochaJS](http://visionmedia.github.io/mocha) globally:
+  ```sh
+  sudo npm install -g mocha
+  ```
+- Then install local depedencies
+  ```sh
+  npm install
+  ```
 
-Installation
-------------
-`npm install`
+### BrowserStack config
 
-Usage
------
-To test againt PhantomJS:
-`mocha index.js --reporter spec`
+```bash
+export BROWSERSTACK_USERNAME=<your-browserstack-username>
+export BROWSERSTACK_ACCESS_KEY=<your-secret-browserstack-access-key>
+```
 
-To test against BrowserStack:
-`mocha index.js --browser=./browsers/chrome.json --reporter spec`
+#### Local
+```sh
+mocha --reporter=spec
+```
 
+#### CI
+```sh
+npm test
+```
+
+### PhantomJS
+
+For testing against local headless PhantomJS browser you must have
+
+- Install [PhantomJS](http://phantomjs.org/download.html)
+- Download [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html)
+- Run the Selenium Standalone server:
+  ```sh
+  java -jar selenium-server-standalone-2.42.1.jar
+  ```
+- Run the tests with:
+  ```sh
+  HEADLESS_PHANTOM=true mocha --reporter=spec
+  ```
 
 
 Todo
 ----
 - Separate test suites from setup code
 - One file per test suite
+
