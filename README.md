@@ -6,7 +6,7 @@ BrowserStack e2e starter with WebDriverIO & MochaJS
 
 Features
 --------
-Test either againt various browsers available at [BrowserStack](http://browserstack.com) or locally against PhantomJS.
+Test either againt various browsers available at [BrowserStack](http://browserstack.com) or locally against PhantomJS. Uses [WebDriverIO](http://webdriver.io/) for communicating with Selenium/BrowserStack.
 
 
 Installation & usage
