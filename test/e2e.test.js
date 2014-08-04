@@ -1,29 +1,28 @@
 var webdriverjs = require('webdriverjs');
-var should = require('chai').should();
+global['should'] = require('chai').should();
 
-var changeCase = require('change-case');
-var async = require('async');
-var _ = require('lodash');
+global['changeCase'] = require('change-case');
+global['lodash'] = require('lodash');
 
 var browsers = [
-  {
-    "browserName"   : "firefox",
-    "os"            : "windows",
-    "os_version"    : "XP",
-    "resolution"    : "1024x768"
-  },
+//  {
+//    "browserName"   : "firefox",
+//    "os"            : "windows",
+//    "os_version"    : "XP",
+//    "resolution"    : "1024x768"
+//  },
   {
     "browserName"   : "chrome",
     "os"            : "os x",
     "os_version"    : "Mavericks",
     "resolution"    : "1280x1024"
-  },
-  {
-    "browserName"   : "IE",
-    "os"            : "windows",
-    "os_version"    : "8.1",
-    "resolution"    : "1920x1080"
   }//,
+//  {
+//    "browserName"   : "IE",
+//    "os"            : "windows",
+//    "os_version"    : "8.1",
+//    "resolution"    : "1920x1080"
+//  }//,
   //{
   // "browserName" : "android",
   // "os" : "android",
@@ -42,7 +41,10 @@ if (process.env.BROWSER_STACK_ACCESS_KEY == null) {
 }
 
 
-_.each(browsers, function(browser) {
+
+
+
+lodash.each(browsers, function(browser) {
 
   var labelString = '';
   labelString += String(browser['browserName']).trim().toLowerCase() == 'ie' ? 'Internet Explorer' : changeCase.titleCase(browser['browserName']);
@@ -56,10 +58,13 @@ _.each(browsers, function(browser) {
 
   describe(labelString, function(){
 
-    this.timeout(99999999);
+    this.timeout(60*60*1000);
+
     var client = {};
 
     before(function(){
+
+      //screenshotHandler.setup('./screenshots');
 
       client = webdriverjs.remote({
         desiredCapabilities: browser,
@@ -69,22 +74,28 @@ _.each(browsers, function(browser) {
         key: process.env.BROWSER_STACK_ACCESS_KEY,
         logLevel: 'silent'//change to 'verbose' if having problems...
       });
-      //client = webdriverjs.remote({
-      //  desiredCapabilities: {
-      //    browserName: 'phantomjs'
-      //  }
-      //});
 
       client.init();
     });
 
-        /*
-     * Test #1
+    /*
+     * Test #
+     * ---------------------------------------------------------------------------
+     */
+    it('should open the website',function(done) {
+      this.timeout(10000);
+      client
+      .url('https://github.com/')
+      .call(done);
+    });
+
+
+    /*
+     * Test #
      * ---------------------------------------------------------------------------
      */
     it('should have a title',function(done) {
       client
-      .url('https://github.com/')
       .getTitle(function(err, title) {
         should.not.exist(err);
         title.should.equal('GitHub · Build software better, together.');
@@ -93,12 +104,25 @@ _.each(browsers, function(browser) {
     });
 
     /*
-     * Test #2
+     * Test #
+     * ---------------------------------------------------------------------------
+     */
+    it('should containg a <body> tag',function(done) {
+      client
+      .getTagName('body', function(err, tagName){
+        should.not.exist(err);
+        tagName.should.equal('body');
+      })
+      .call(done);
+    });
+
+
+    /*
+     * Test #
      * ---------------------------------------------------------------------------
      */
     it('should have a properly sized logo',function(done) {
       client
-      .url('https://github.com/')
       .getElementSize('.header-logo-wordmark', function(err, result) {
         should.not.exist(err);
         result.height.should.equal(32);
@@ -112,34 +136,18 @@ _.each(browsers, function(browser) {
         setTimeout(done, 1000);
       });
     });
+
+    afterEach(function(done) {
+
+      if(this.currentTest.state === 'failed') {
+        //screenshotHandler.take(client, this.currentTest.title);
+      }
+      done();
+
+    });
+
+
   });
 
 });
 
-
-/*
-before(function(done){
-  screenshotHandler.setup('./screenshots');
-  client.init(done);
-});
-
-beforeEach(function(done) {
-  this.timeout = timeoutInMillis;
-  done();
-
-});
-
-
-after(function(done) {
-  client.end(done);
-});
-
-afterEach(function(done) {
-
-  if(this.currentTest.state === 'failed') {
-    screenshotHandler.take(client, this.currentTest.title);
-  }
-  done();
-
-});
-*/
