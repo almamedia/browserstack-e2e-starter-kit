@@ -45,7 +45,7 @@ if (process.env.BROWSER_STACK_ACCESS_KEY == null) {
 _.each(browsers, function(browser) {
 
   var labelString = '';
-  labelString += browser['browserName']=='Ie' ? 'Internet Explorer' : changeCase.titleCase(browser['browserName']);
+  labelString += String(browser['browserName']).trim().toLowerCase() == 'ie' ? 'Internet Explorer' : changeCase.titleCase(browser['browserName']);
   labelString += browser['version'] ? ' ['+browser['version']+']' :' [latest stable version]';
   labelString += ' running in';
   labelString += ' '+changeCase.titleCase(browser['os']);
