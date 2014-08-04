@@ -56,11 +56,12 @@ if (phantom) {
 }
 
 
-if (process.env.BROWSERSTACK_USERNAME == null) {
+
+if (!phantom && process.env.BROWSERSTACK_USERNAME == null) {
   throw 'You need to set your BrowserStack username as BROWSERSTACK_USERNAME enviroment variable!';
 }
 
-if (process.env.BROWSERSTACK_ACCESS_KEY == null) {
+if (!phantom && process.env.BROWSERSTACK_ACCESS_KEY == null) {
   throw 'You need to set your BrowserStack access key as BROWSERSTACK_ACCESS_KEY enviroment variable!';
 }
 
