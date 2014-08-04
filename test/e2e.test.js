@@ -1,43 +1,67 @@
 var webdriverjs = require('webdriverjs');
+var os = require('os');
 global['should'] = require('chai').should();
 
 global['changeCase'] = require('change-case');
 global['lodash'] = require('lodash');
 
-var browsers = [
-//  {
-//    "browserName"   : "firefox",
-//    "os"            : "windows",
-//    "os_version"    : "XP",
-//    "resolution"    : "1024x768"
-//  },
-  {
-    "browserName"   : "chrome",
-    "os"            : "os x",
-    "os_version"    : "Mavericks",
-    "resolution"    : "1280x1024"
-  }//,
-//  {
-//    "browserName"   : "IE",
-//    "os"            : "windows",
-//    "os_version"    : "8.1",
-//    "resolution"    : "1920x1080"
-//  }//,
-  //{
-  // "browserName" : "android",
-  // "os" : "android",
-  // "device" : "Samsung Galaxy S III",
-  // "deviceOrientation": "portrait"
-  //}
+var phantom = process.env.HEADLESS_PHANTOM || false;
 
-];
 
-if (process.env.BROWSER_STACK_USERNAME == null) {
-  throw 'You need to set your BrowserStack username as BROWSER_STACK_USERNAME enviroment variable!';
+
+var browsers = [];
+
+
+if (phantom) {
+
+  browsers = [
+    {
+      "browserName"   : "phantom",
+      "os"            : os.type()+' '+os.arch(),
+      "os_version"    : os.release(),
+      "resolution"    : "headless"
+    },
+  ]
+
+} else {
+
+  browsers = [
+  //  {
+  //    "browserName"   : "firefox",
+  //    "os"            : "windows",
+  //    "os_version"    : "XP",
+  //    "resolution"    : "1024x768"
+  //  },
+    {
+      "browserName"   : "chrome",
+      "os"            : "os x",
+      "os_version"    : "Mavericks",
+      "resolution"    : "1280x1024"
+    },
+    {
+      "browserName"   : "IE",
+      "os"            : "windows",
+      "os_version"    : "8.1",
+      "resolution"    : "1920x1080"
+    }//,
+    //{
+    // "browserName" : "android",
+    // "os" : "android",
+    // "device" : "Samsung Galaxy S III",
+    // "deviceOrientation": "portrait"
+    //}
+
+  ];
+
 }
 
-if (process.env.BROWSER_STACK_ACCESS_KEY == null) {
-  throw 'You need to set your BrowserStack access key as BROWSER_STACK_ACCESS_KEY enviroment variable!';
+
+if (process.env.BROWSERSTACK_USERNAME == null) {
+  throw 'You need to set your BrowserStack username as BROWSERSTACK_USERNAME enviroment variable!';
+}
+
+if (process.env.BROWSERSTACK_ACCESS_KEY == null) {
+  throw 'You need to set your BrowserStack access key as BROWSERSTACK_ACCESS_KEY enviroment variable!';
 }
 
 
@@ -66,14 +90,26 @@ lodash.each(browsers, function(browser) {
 
       //screenshotHandler.setup('./screenshots');
 
-      client = webdriverjs.remote({
-        desiredCapabilities: browser,
-        host: 'hub.browserstack.com',
-        port: 80,
-        user : process.env.BROWSER_STACK_USERNAME,
-        key: process.env.BROWSER_STACK_ACCESS_KEY,
-        logLevel: 'silent'//change to 'verbose' if having problems...
-      });
+      if (phantom) {
+
+        client = webdriverjs.remote({
+          desiredCapabilities: {
+            browserName: 'phantomjs'
+          }
+        });
+
+      } else {
+
+        client = webdriverjs.remote({
+          desiredCapabilities: browser,
+          host: 'hub.browserstack.com',
+          port: 80,
+          user : process.env.BROWSERSTACK_USERNAME,
+          key: process.env.BROWSERSTACK_ACCESS_KEY,
+          logLevel: 'silent'//change to 'verbose' if having problems...
+        });
+
+      }
 
       client.init();
     });
