@@ -134,8 +134,8 @@ _.each(browsers, function(browser) {
     before(function () {
       // Iterate over all of the test suites/contexts
       this.test.parent.suites.forEach(function bindCleanup (suite) {
-        // Attach an beforeAll listener that performs the cleanup
-        suite.beforeAll(resetBrowser);
+        // Attach an afterAll listener that performs the cleanup
+        suite.afterAll(resetBrowser);
       });
     });
 
