@@ -32,7 +32,7 @@ Installation & usage
 
 ### Running tests locally
 ```sh
-mocha --reporter=spec
+mocha
 ```
 
 ### Running tests on Continuous Integration
@@ -60,7 +60,7 @@ For testing against local headless PhantomJS browser (without using BrowserStack
 - Run the tests with:
 
   ```sh
-  HEADLESS_PHANTOM=true mocha --reporter=spec
+  HEADLESS_PHANTOM=true mocha
   ```
 
 
