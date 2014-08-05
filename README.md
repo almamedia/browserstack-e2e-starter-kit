@@ -1,19 +1,27 @@
 BrowserStack e2e starter
 ========================
 
+|[**Installation**](#installation--config)|[**Running test**](#running-tests)| [**Configuring Browsers**](#configuring-browsers) | [**PhantomJS**](#phantomjs) |  [**Writing tests**](#writing-tests)  | [**FAQ**](#faq)  |  [**TODO**](#todo)  |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+
+
+
+***
+
+<br/>
+
+
 [MochaJS](http://visionmedia.github.io/mocha) end-to-end tests against multiple browsers available at [BrowserStack](http://browserstack.com) or locally against [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html) & [PhantomJS](http://phantomjs.org/download.html).
 
-Here's what running test suites looks like:
+*Here's what running test suites looks like:*
 ![Example output](/example-output.png "Example output")
 
 
 
-Has still some [**TODOs**](#todo)!
 
 
-
-Installation & usage
---------------------
+Installation & config
+---------------------
 
 - Requires [NodeJS](http://nodejs.org/) `v0.10` or newer
 
@@ -36,24 +44,33 @@ Installation & usage
   export BROWSERSTACK_ACCESS_KEY=<your-secret-browserstack-access-key>
   ```
 
-### Running tests locally
+
+
+Running tests
+-------------
+
+### Locally
 ```sh
 npm test
 ```
 
-### Running tests on Continuous Integration
+### On Continuous Integration
 
 Set an environment variable `export CI=true` in your continuous integration environment or just prepend the variable before the test command:
+
 ```sh
 CI=true npm test
 ```
 This outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia.org/wiki/XUnit).
 
 
+
 Configuring browsers
 --------------------
 
 Browsers (together with operating system versin and screen resolution) are configured in [`./test/browsers.json`](test/browsers.json). See BrowserStack [capabilities](https://www.browserstack.com/automate/capabilities) and the list of available [browsers & mobile devices for Selenium testing](https://www.browserstack.com/list-of-browsers-and-platforms?product=automate).
+
+
 
 
 PhantomJS
@@ -76,6 +93,7 @@ For testing against local headless PhantomJS browser (without using BrowserStack
   ```sh
   HEADLESS_PHANTOM=true mocha
   ```
+
 
 
 
@@ -104,6 +122,8 @@ See the provided examples [`github-homepage.testsuite.js`](test/suites/github-ho
 
 
 
+
+
 FAQ
 ---
 - **Why a simple test which just opens a website takes so long? Is my website slow?**
@@ -113,6 +133,8 @@ FAQ
 - **Can I run these BrowserStack tests in paraller?**
 
   No you can't, at least without heavy refactor. Also by design [MochaJS](http://visionmedia.github.io/mocha) runs all the tests serially. You probably shouldn't be running end-to-end tests every minute, so the fact these tests take some time shouldn't be a problem. If you absolutely require parallel runs you should check out something like [this](https://github.com/browserstack/selenium-runner).
+
+
 
 
 Todo
