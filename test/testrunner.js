@@ -1,9 +1,8 @@
 var webdriverjs = require('webdriverjs');
 var os = require('os');
-global['should'] = require('chai').should();
 
-global['changeCase'] = require('change-case');
-global['lodash'] = require('lodash');
+var changeCase = require('change-case');
+var _ = require('lodash');
 
 var phantom = process.env.HEADLESS_PHANTOM || false;
 
@@ -11,6 +10,12 @@ var phantom = process.env.HEADLESS_PHANTOM || false;
 var shell = require('shelljs');
 
 
+global.should = require('chai').should();
+
+
+
+
+var homePageTest = require('./homepage.test.js');
 
 var browsers = [];
 
@@ -73,7 +78,7 @@ if (!phantom && process.env.BROWSERSTACK_ACCESS_KEY == null) {
 
 
 
-lodash.each(browsers, function(browser) {
+_.each(browsers, function(browser) {
 
   var labelString = '';
   labelString += String(browser['browserName']).trim().toLowerCase() == 'ie' ? 'Internet Explorer' : changeCase.titleCase(browser['browserName']);
@@ -85,9 +90,43 @@ lodash.each(browsers, function(browser) {
   labelString += browser['deviceOrientation'] ? ' '+browser['deviceOrientation'] : '';
   labelString += browser['resolution'] ? ' '+browser['resolution'] : '';
 
+  var client = {};
+
+  if (phantom) {
+
+    client = webdriverjs.remote({
+      desiredCapabilities: {
+        browserName: 'phantomjs'
+      },
+      logLevel: 'silent'//change to 'verbose' if having problems...
+    });
+  } else {
+
+    client = webdriverjs.remote({
+      desiredCapabilities: browser,
+      host: 'hub.browserstack.com',
+      port: 80,
+      user : process.env.BROWSERSTACK_USERNAME,
+      key: process.env.BROWSERSTACK_ACCESS_KEY,
+      logLevel: 'silent'//change to 'verbose' if having problems...
+    });
+  }
+
   describe(labelString, function(){
 
     // run tests inside here
+    homePageTest(client, labelString);
+
+
+
+//    afterEach(function(done) {
+//
+//      if(this.currentTest.state === 'failed') {
+//        //screenshotHandler.take(client, this.currentTest.title);
+//      }
+//      done();
+//    });
+
 
   });
 

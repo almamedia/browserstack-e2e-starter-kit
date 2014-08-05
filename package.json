@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "chai": "^1.9.1",
-    "webdriverjs": "webdriverio/webdriverio#4363a4d787ecf4e61f18f3f96ad96c3fce2f0d5b",
+    "webdriverjs": "1.7.2",
     "mocha": "^1.20.0",
     "change-case": "^2.1.1",
     "rimraf": "^2.2.8",
