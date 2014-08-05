@@ -104,6 +104,7 @@ See the provided examples [`github-homepage.testsuite.js`](test/suites/github-ho
 FAQ
 ---
 - **Why a simple test which just opens a website takes so long? Is my website slow?**
+
   No, your website is probably OK. Running a test against BrowserStack service means that when the test starts, BrowserStack has to start up a machine (or probably just a simulator) and open up a new browser before it gets to the part where the website starts to load. That's why the tests take some time.
 
 
