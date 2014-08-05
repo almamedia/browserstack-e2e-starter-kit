@@ -9,16 +9,19 @@ Here's what running test suites looks like:
 
 Table of Contents
 -----------------
-|[**Installation**](#installation--usage)| [**Configuring Browsers**](#configuring-browsers) | [**PhantomJS**](#phantomjs) |  [**Writing tests**](#writing-tests)  | [**FAQ**](#faq)  |  [**TODO**](#todo)  |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|[**Installation**](#installation--config)|[**Running test**](#running-tests)| [**Configuring Browsers**](#configuring-browsers) | [**PhantomJS**](#phantomjs) |  [**Writing tests**](#writing-tests)  | [**FAQ**](#faq)  |  [**TODO**](#todo)  |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 
+<br/>
+
+***
 
 <br/><br/>
 
 
 
-Installation & usage
---------------------
+Installation & config
+---------------------
 
 - Requires [NodeJS](http://nodejs.org/) `v0.10` or newer
 
@@ -40,6 +43,9 @@ Installation & usage
   export BROWSERSTACK_USERNAME=<your-browserstack-username>
   export BROWSERSTACK_ACCESS_KEY=<your-secret-browserstack-access-key>
   ```
+
+Running test
+------------
 
 ### Running tests locally
 ```sh
