@@ -70,7 +70,7 @@ Writing tests
 
 Test suites must be stored in `./test/suites/`-folder.
 
-All suites must be written as CommonJS modules and they need to have at least one MochaJS `describe`-block inside them.
+A test suite must exposed as CommonJS module function which takes the ([webdriver.io](http://webdriver.io/)) `client` as an argument. Suite must have at least one MochaJS `describe`-block inside them.
 
 Here's an example structure:
 
