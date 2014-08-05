@@ -38,12 +38,14 @@ Installation & usage
 
 ### Running tests locally
 ```sh
-mocha
+npm test
 ```
 
 ### Running tests on Continuous Integration
+
+Set an environment variable `export CI=true` in your continuous integration environment or just prepend the variable before the test command:
 ```sh
-npm test
+CI=true npm test
 ```
 This outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia.org/wiki/XUnit).
 

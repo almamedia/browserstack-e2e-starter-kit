@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter=xunit"
+    "test": "[ ${CI} ] && mocha --reporter=xunit || mocha"
   },
   "engines": {
     "node": ">=0.10.26"
