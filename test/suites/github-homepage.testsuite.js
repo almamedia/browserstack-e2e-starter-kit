@@ -1,11 +1,16 @@
+/*
+ * Example Test Suite 1
+ * =============================================================================
+ */
 module.exports = function(client) {
 
   describe('Github homepage', function() {
 
     /*
-     * Test #
-     * ---------------------------------------------------------------------------
-     * Opening the website is the slowest test as it means starting up the machine/browser as well
+     * Test # 1
+     * -------------------------------------------------------------------------
+     * Opening the website is the slowest test
+     * as it means starting up the machine/browser as well
      */
     it('should open the website',function(done) {
       client
@@ -15,8 +20,8 @@ module.exports = function(client) {
 
 
     /*
-     * Test #
-     * ---------------------------------------------------------------------------
+     * Test # 2
+     * -------------------------------------------------------------------------
      */
     it('should have a title',function(done) {
       client
@@ -28,29 +33,28 @@ module.exports = function(client) {
     });
 
     /*
-     * Test #
-     * ---------------------------------------------------------------------------
+     * Test # 3
+     * -------------------------------------------------------------------------
      */
-    it('should containg a <body> tag',function(done) {
+    it('should have a visible <body>',function(done) {
       client
-      .getTagName('body', function(err, tagName){
+      .isVisible('body', function(err, isItVisible){
         should.not.exist(err);
-        tagName.should.equal('body');
+        isItVisible.should.be.true;
       })
       .call(done);
     });
 
 
     /*
-     * Test #
-     * ---------------------------------------------------------------------------
+     * Test # 4
+     * -------------------------------------------------------------------------
      */
     it('should have a properly sized logo',function(done) {
       client
       .getElementSize('.header-logo-wordmark', function(err, result) {
         should.not.exist(err);
         result.height.should.equal(32);
-        //result.width.should.equal(89);
       })
       .call(done);
     });
