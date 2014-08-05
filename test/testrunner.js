@@ -119,12 +119,12 @@ _.each(browsers, function(browser) {
     before(function(){
       var that = this;
       client.init(function callbackAfterClientInit(){
-        console.log('CLIENT INITED');
+        //console.log('CLIENT INITED');
         // Iterate over all of the test suites/contexts
         _.each(that.test.parent.suites, function process(suite){
           // Attach an afterAll listener that performs the cleanup
           suite.afterAll(function resetClient(){
-            console.log('RESET TO ABOUT:BLANK');
+            //console.log('RESET TO ABOUT:BLANK');
             client.url('about:blank');
           });
         });
@@ -139,10 +139,10 @@ _.each(browsers, function(browser) {
     after(function(done){
       client.end(function callbackAfterClientEnd(err){
         if(err) console.log(err);
-        console.log('END SESSION');
+        //console.log('END SESSION');
         client.endAll(function callbackAfterClientEndAll(err){
           if(err) console.log(err);
-          console.log('END ALL SESSIONS');
+          //console.log('END ALL SESSIONS');
           client.call(done);
         })
       });
