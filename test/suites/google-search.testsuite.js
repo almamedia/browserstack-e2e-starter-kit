@@ -18,35 +18,8 @@ module.exports = function(client) {
       .call(done);
     });
 
-
     /*
      * Test # 2
-     * -------------------------------------------------------------------------
-     */
-    it('should have a title',function(done) {
-      client
-      .getTitle(function(err, title) {
-        should.not.exist(err);
-        title.should.equal('Google');
-      })
-      .call(done);
-    });
-
-    /*
-     * Test # 3
-     * -------------------------------------------------------------------------
-     */
-    it('should have a visible <body>',function(done) {
-      client
-      .isVisible('body', function(err, isItVisible){
-        should.not.exist(err);
-        isItVisible.should.be.true;
-      })
-      .call(done);
-    });
-
-    /*
-     * Test # 4
      * -------------------------------------------------------------------------
      */
     it('should have a search input field visible',function(done) {
@@ -59,10 +32,10 @@ module.exports = function(client) {
     });
 
     /*
-     * Test # 5
+     * Test # 3
      * -------------------------------------------------------------------------
      */
-    it('should allow search',function(done) {
+    it('should open the search results page after submitting search form',function(done) {
       client
       .setValue('input[name=q]', 'Cthulhu', function(err){
         should.not.exist(err);
