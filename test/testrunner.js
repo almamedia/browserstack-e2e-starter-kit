@@ -10,7 +10,6 @@
  */
 var webdriverjs = require('webdriverjs');
 var os = require('os');
-var changeCase = require('change-case');
 var _ = require('lodash');
 var shell = require('shelljs');
 global.should = require('chai').should();//exposed as global for the suites
@@ -68,13 +67,17 @@ if (!phantom && process.env.BROWSERSTACK_ACCESS_KEY == null) {
 /*
  * Helper function for building human readable browser name/version/os string
  * -----------------------------------------------------------------------------
+ * - It's one damn ugly function, but who cares...
  */
 function browserLabel(browser) {
   var labelString = '';
-  labelString += String(browser['browserName']).trim().toLowerCase() == 'ie' ? 'Internet Explorer' : changeCase.titleCase(browser['browserName']);
-  labelString += browser['version'] ? ' ['+browser['version']+']' :' [latest stable version]';
-  labelString += ' running in';
-  labelString += ' '+changeCase.titleCase(browser['os']);
+  labelString += String(browser['browserName']).trim().toLowerCase() == 'ie' ? 'Internet Explorer' : browser['browserName'];
+  if(browser['version'] ){
+    labelString += ' ['+browser['version']+']';
+  } else if(!browser['device']) {
+    labelString += ' [latest stable version]';
+  }
+  labelString += ' '+browser['os'];
   labelString += browser['os_version'] ? ' '+browser['os_version'] : '';
   labelString += browser['device'] ? ' '+browser['device'] : '';
   labelString += browser['deviceOrientation'] ? ' '+browser['deviceOrientation'] : '';

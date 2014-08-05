@@ -1,26 +1,28 @@
 [
   {
-    "browserName"   : "firefox",
-    "os"            : "windows",
+    "browserName"   : "Firefox",
+    "os"            : "Windows",
     "os_version"    : "XP",
     "resolution"    : "1024x768"
   },
   {
-    "browserName"   : "chrome",
-    "os"            : "os x",
+    "browserName"   : "Chrome",
+    "os"            : "OS X",
     "os_version"    : "Mavericks",
     "resolution"    : "1280x1024"
   },
   {
     "browserName"   : "IE",
-    "os"            : "windows",
+    "version"       : "11.0",
+    "os"            : "Windows",
     "os_version"    : "8.1",
     "resolution"    : "1920x1080"
   },
   {
-   "browserName" : "android",
-   "os" : "android",
-   "device" : "Samsung Galaxy S III",
+   "browserName"    : "iPad",
+   "os"             : "iOS",
+   "os_version"     : "7.0",
+   "device"         : "iPad 3rd (7.0)",
    "deviceOrientation": "portrait"
   }
 ]
