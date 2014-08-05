@@ -92,7 +92,6 @@ See the provided examples [`github-homepage.testsuite.js`](test/suites/github-ho
 
 Todo
 ----
-- Separate browser configs to ext json file
 - Optional screenshots on test fails
 - Ability to organize suites into subfolders
 - Open source
