@@ -1,7 +1,7 @@
 BrowserStack e2e starter
 ========================
 
-Test either againt multiple browsers available at [BrowserStack](http://browserstack.com) or locally against PhantomJS. Uses [WebDriverIO](http://webdriver.io/) for communicating with Selenium/BrowserStack.
+[MochaJS](http://visionmedia.github.io/mocha) end-to-end tests against multiple browsers available at [BrowserStack](http://browserstack.com) or locally against PhantomJS.
 
 ![Example output](/example-output.png "Example output")
 
