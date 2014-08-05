@@ -1,5 +1,5 @@
 /*
- * Example Test Suite 1
+ * Test suite for testing Github homepage
  * =============================================================================
  */
 module.exports = function(client) {

@@ -1,10 +1,10 @@
 /*
- * Example Test Suite 2
+ * Test suite for testing Google search functionality
  * =============================================================================
  */
 module.exports = function(client) {
 
-  describe('Google homepage', function() {
+  describe('Google search', function() {
 
     /*
      * Test # 1
