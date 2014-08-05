@@ -44,15 +44,15 @@ Installation & config
   export BROWSERSTACK_ACCESS_KEY=<your-secret-browserstack-access-key>
   ```
 
-Running test
-------------
+Running tests
+-------------
 
-### Running tests locally
+### Locally
 ```sh
 mocha
 ```
 
-### Running tests on Continuous Integration
+### On Continuous Integration
 ```sh
 npm test
 ```
