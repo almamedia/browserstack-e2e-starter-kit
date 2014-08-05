@@ -14,9 +14,7 @@ global.should = require('chai').should();
 
 
 
-
-var homePageTest = require('./homepage.test.js');
-var googleTest = require('./example2.test.js');
+var suites = require('./suites');
 
 var browsers = [];
 
@@ -143,9 +141,9 @@ _.each(browsers, function(browser) {
 
 
     // run tests inside here
-    homePageTest(client);
-
-    googleTest(client);
+    _.each(suites, function(suite){
+      suite(client);
+    });
 
     after(endBrowser);
 
