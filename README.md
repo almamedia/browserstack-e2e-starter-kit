@@ -78,3 +78,5 @@ Todo
 - Separate browser configs to ext json file
 - One file per test suite
 - Optional screenshots on test fails
+- Documentation about writing tests
+- Better example test suites
