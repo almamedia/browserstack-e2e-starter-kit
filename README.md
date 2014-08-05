@@ -13,7 +13,7 @@ BrowserStack e2e starter
 
 [MochaJS](http://visionmedia.github.io/mocha) end-to-end tests against multiple browsers available at [BrowserStack](http://browserstack.com) or locally against [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html) & [PhantomJS](http://phantomjs.org/download.html).
 
-Here's what running test suites looks like:
+*Here's what running test suites looks like:*
 ![Example output](/example-output.png "Example output")
 
 
@@ -44,6 +44,8 @@ Installation & config
   export BROWSERSTACK_ACCESS_KEY=<your-secret-browserstack-access-key>
   ```
 
+
+
 Running tests
 -------------
 
@@ -59,10 +61,14 @@ npm test
 This outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia.org/wiki/XUnit).
 
 
+
+
 Configuring browsers
 --------------------
 
 Browsers (together with operating system versin and screen resolution) are configured in [`./test/browsers.json`](test/browsers.json). See BrowserStack [capabilities](https://www.browserstack.com/automate/capabilities) and the list of available [browsers & mobile devices for Selenium testing](https://www.browserstack.com/list-of-browsers-and-platforms?product=automate).
+
+
 
 
 PhantomJS
@@ -85,6 +91,7 @@ For testing against local headless PhantomJS browser (without using BrowserStack
   ```sh
   HEADLESS_PHANTOM=true mocha
   ```
+
 
 
 
@@ -113,6 +120,8 @@ See the provided examples [`github-homepage.testsuite.js`](test/suites/github-ho
 
 
 
+
+
 FAQ
 ---
 - **Why a simple test which just opens a website takes so long? Is my website slow?**
@@ -122,6 +131,8 @@ FAQ
 - **Can I run these BrowserStack tests in paraller?**
 
   No you can't, at least without heavy refactor. Also by design [MochaJS](http://visionmedia.github.io/mocha) runs all the tests serially. You probably shouldn't be running end-to-end tests every minute, so the fact these tests take some time shouldn't be a problem. If you absolutely require parallel runs you should check out something like [this](https://github.com/browserstack/selenium-runner).
+
+
 
 
 Todo
