@@ -1,22 +1,22 @@
 BrowserStack e2e starter
 ========================
 
+|[**Installation**](#installation--config)|[**Running test**](#running-tests)| [**Configuring Browsers**](#configuring-browsers) | [**PhantomJS**](#phantomjs) |  [**Writing tests**](#writing-tests)  | [**FAQ**](#faq)  |  [**TODO**](#todo)  |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+
+
+
+***
+
+
+
+
 [MochaJS](http://visionmedia.github.io/mocha) end-to-end tests against multiple browsers available at [BrowserStack](http://browserstack.com) or locally against [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html) & [PhantomJS](http://phantomjs.org/download.html).
 
 Here's what running test suites looks like:
 ![Example output](/example-output.png "Example output")
 
 
-Table of Contents
------------------
-|[**Installation**](#installation--config)|[**Running test**](#running-tests)| [**Configuring Browsers**](#configuring-browsers) | [**PhantomJS**](#phantomjs) |  [**Writing tests**](#writing-tests)  | [**FAQ**](#faq)  |  [**TODO**](#todo)  |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-
-<br/>
-
-***
-
-<br/><br/>
 
 
 
