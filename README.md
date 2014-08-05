@@ -48,7 +48,8 @@ npm test
 This outputs the test results as "standard-ish" [XUnit XML](http://en.wikipedia.org/wiki/XUnit).
 
 
-### Configuring browsers
+Configuring browsers
+--------------------
 
 Browsers (together with operating system versin and screen resolution) are configured in [`./test/browsers.json`](test/browsers.json). See BrowserStack [capabilities](https://www.browserstack.com/automate/capabilities) and the list of available [browsers & mobile devices for Selenium testing](https://www.browserstack.com/list-of-browsers-and-platforms?product=automate).
 
