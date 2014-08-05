@@ -3,7 +3,12 @@ BrowserStack e2e starter
 
 Test either againt multiple browsers available at [BrowserStack](http://browserstack.com) or locally against PhantomJS. Uses [WebDriverIO](http://webdriver.io/) for communicating with Selenium/BrowserStack.
 
+![Example output](/example-output.png "Example output")
+
+
+
 Has still some [**TODOs**](#todo)!
+
 
 
 Installation & usage
