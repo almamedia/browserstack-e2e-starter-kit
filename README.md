@@ -64,6 +64,14 @@ For testing against local headless PhantomJS browser (without using BrowserStack
   ```
 
 
+
+Writing tests
+-------------
+
+TODO
+
+
+
 Todo
 ----
 - Separate test suites from setup code
