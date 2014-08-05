@@ -68,15 +68,30 @@ For testing against local headless PhantomJS browser (without using BrowserStack
 Writing tests
 -------------
 
-TODO
+Test suites must be stored in `./test/suites/`-folder.
+
+All suites must be written as CommonJS modules and they need to have at least one MochaJS `describe`-block inside them.
+
+Here's an example structure:
+
+```js
+module.exports = function(client) {
+
+  describe('Describe your test suite here', function() {
+    it('should do something', function(done) {
+      /* some tests */
+    });
+  });
+
+}
+```
+
+See the provided examples [`github-homepage.testsuite.js`](test/suites/github-homepage.testsuite.js) and [`google-search.testsuite.js`](test/suites/google-search.testsuite.js) for more examples.
 
 
 
 Todo
 ----
-- Separate test suites from setup code
 - Separate browser configs to ext json file
-- One file per test suite
 - Optional screenshots on test fails
-- Documentation about writing tests
-- Better example test suites
+- Ability to organize suites into subfolders
