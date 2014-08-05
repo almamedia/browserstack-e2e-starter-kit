@@ -1,0 +1,26 @@
+[
+  {
+    "browserName"   : "firefox",
+    "os"            : "windows",
+    "os_version"    : "XP",
+    "resolution"    : "1024x768"
+  },
+  {
+    "browserName"   : "chrome",
+    "os"            : "os x",
+    "os_version"    : "Mavericks",
+    "resolution"    : "1280x1024"
+  },
+  {
+    "browserName"   : "IE",
+    "os"            : "windows",
+    "os_version"    : "8.1",
+    "resolution"    : "1920x1080"
+  },
+  {
+   "browserName" : "android",
+   "os" : "android",
+   "device" : "Samsung Galaxy S III",
+   "deviceOrientation": "portrait"
+  }
+]

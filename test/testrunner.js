@@ -1,23 +1,41 @@
+/*
+ * Test runner
+ * =============================================================================
+ */
+
+
+/*
+ * Require modules
+ * -----------------------------------------------------------------------------
+ */
 var webdriverjs = require('webdriverjs');
 var os = require('os');
-
 var changeCase = require('change-case');
 var _ = require('lodash');
-
-var phantom = process.env.HEADLESS_PHANTOM || false;
-
-
 var shell = require('shelljs');
+global.should = require('chai').should();//exposed as global for the suites
 
 
-global.should = require('chai').should();
-
-
-
+/*
+ * Require all test suites
+ * -----------------------------------------------------------------------------
+ * - uses https://www.npmjs.org/package/require-directory
+ */
 var suites = require('./suites');
 
-var browsers = [];
 
+/*
+ * Require browser configurations
+ * -----------------------------------------------------------------------------
+ */
+var browsers = require('./browsers.json');
+
+
+/*
+ * Detect if PhantomJS mode is called
+ * -----------------------------------------------------------------------------
+ */
+var phantom = process.env.HEADLESS_PHANTOM || false;
 
 if (phantom) {
 
@@ -31,40 +49,13 @@ if (phantom) {
     }
   ]
 
-} else {
-
-  browsers = [
-  //  {
-  //    "browserName"   : "firefox",
-  //    "os"            : "windows",
-  //    "os_version"    : "XP",
-  //    "resolution"    : "1024x768"
-  //  },
-  //  {
-  //    "browserName"   : "chrome",
-  //    "os"            : "os x",
-  //    "os_version"    : "Mavericks",
-  //    "resolution"    : "1280x1024"
-  //  },
-    {
-      "browserName"   : "IE",
-      "os"            : "windows",
-      "os_version"    : "8.1",
-      "resolution"    : "1920x1080"
-    }//,
-    //{
-    // "browserName" : "android",
-    // "os" : "android",
-    // "device" : "Samsung Galaxy S III",
-    // "deviceOrientation": "portrait"
-    //}
-
-  ];
-
 }
 
 
-
+/*
+ * Check Browserstack username & access key (if not in PhantomJS mode)
+ * -----------------------------------------------------------------------------
+ */
 if (!phantom && process.env.BROWSERSTACK_USERNAME == null) {
   throw 'You need to set your BrowserStack username as BROWSERSTACK_USERNAME enviroment variable!';
 }
@@ -74,11 +65,11 @@ if (!phantom && process.env.BROWSERSTACK_ACCESS_KEY == null) {
 }
 
 
-
-
-
-_.each(browsers, function(browser) {
-
+/*
+ * Helper function for building human readable browser name/version/os string
+ * -----------------------------------------------------------------------------
+ */
+function browserLabel(browser) {
   var labelString = '';
   labelString += String(browser['browserName']).trim().toLowerCase() == 'ie' ? 'Internet Explorer' : changeCase.titleCase(browser['browserName']);
   labelString += browser['version'] ? ' ['+browser['version']+']' :' [latest stable version]';
@@ -88,6 +79,15 @@ _.each(browsers, function(browser) {
   labelString += browser['device'] ? ' '+browser['device'] : '';
   labelString += browser['deviceOrientation'] ? ' '+browser['deviceOrientation'] : '';
   labelString += browser['resolution'] ? ' '+browser['resolution'] : '';
+  return labelString;
+}
+
+
+/*
+ * Helper function to setup the webdriver.io client
+ * -----------------------------------------------------------------------------
+ */
+function setupClient(browser) {
 
   var client = {};
 
@@ -111,38 +111,66 @@ _.each(browsers, function(browser) {
     });
   }
 
-  describe(labelString, function(){
+  return client;
+}
 
+
+/*
+ * Run all tests recursively on all browsers
+ * -----------------------------------------------------------------------------
+ */
+_.each(browsers, function(browser) {
+
+  var client = setupClient(browser);
+
+  describe(browserLabel(browser), function(){
+
+    /*
+     * Set time out for all suites (within on browser)
+     * -------------------------------------------------------------------------
+     * - Be generous, you shouldn't be running e2e tests every minute...
+     */
     this.timeout(60*60*1000);
 
-    // https://github.com/visionmedia/mocha/issues/911
+    /*
+     * Reset browser after each suite
+     * -------------------------------------------------------------------------
+     * - resets the client to url about:blank after every test suite
+     * - patch "afterEachDescribe"
+     *   - stolen from: https://github.com/visionmedia/mocha/issues/911
+     *   - iterates over all suites and attaches afterAll listener manually
+     */
     before(function(){
       var that = this;
       client.init(function callbackAfterClientInit(){
-        //console.log('CLIENT INITED');
-        // Iterate over all of the test suites/contexts
         _.each(that.test.parent.suites, function process(suite){
-          // Attach an afterAll listener that performs the cleanup
           suite.afterAll(function resetClient(){
-            //console.log('RESET TO ABOUT:BLANK');
             client.url('about:blank');
           });
         });
       });
     });
 
-    // run tests inside here
+    /*
+     * Run all test suites recursively
+     * -------------------------------------------------------------------------
+     * - Actually generates the test suites runtime
+     */
     _.each(suites, function(suite){
       suite(client);
     });
 
+    /*
+     * Close the browser after all suites have been tested
+     * -------------------------------------------------------------------------
+     * - To prevent BrowserStack sessions hanging we first call end() and then
+     *   endAll just to be sure
+     */
     after(function(done){
       client.end(function callbackAfterClientEnd(err){
         if(err) console.log(err);
-        //console.log('END SESSION');
         client.endAll(function callbackAfterClientEndAll(err){
           if(err) console.log(err);
-          //console.log('END ALL SESSIONS');
           client.call(done);
         })
       });
