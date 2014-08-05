@@ -29,6 +29,13 @@ if (phantom) {
       "os_version"    : os.release(),
       "resolution"    : "headless"
     },
+    {
+      "browserName"   : "phantom",
+      "version"       : String(shell.exec('phantomjs -v', {silent:true}).output).trim() || 'version unknown',
+      "os"            : os.type()+' '+os.arch(),
+      "os_version"    : os.release(),
+      "resolution"    : "headless"
+    }
   ]
 
 } else {
@@ -40,12 +47,12 @@ if (phantom) {
   //    "os_version"    : "XP",
   //    "resolution"    : "1024x768"
   //  },
-    {
-      "browserName"   : "chrome",
-      "os"            : "os x",
-      "os_version"    : "Mavericks",
-      "resolution"    : "1280x1024"
-    },
+  //  {
+  //    "browserName"   : "chrome",
+  //    "os"            : "os x",
+  //    "os_version"    : "Mavericks",
+  //    "resolution"    : "1280x1024"
+  //  },
     {
       "browserName"   : "IE",
       "os"            : "windows",
@@ -111,41 +118,42 @@ _.each(browsers, function(browser) {
     });
   }
 
-  function initBrowser() {
-    client.init();
-  }
-
-  function resetBrowser() {
-    client.url('about:blank');
-  }
-
-  function endBrowser() {
-    client.end();
-  }
-
   describe(labelString, function(){
 
     this.timeout(60*60*1000);
 
-    before(initBrowser);
-
     // https://github.com/visionmedia/mocha/issues/911
-    // Before anything else is run
-    before(function () {
-      // Iterate over all of the test suites/contexts
-      this.test.parent.suites.forEach(function bindCleanup (suite) {
-        // Attach an afterAll listener that performs the cleanup
-        suite.afterAll(resetBrowser);
+    before(function(){
+      var that = this;
+      client.init(function callbackAfterClientInit(){
+        console.log('CLIENT INITED');
+        // Iterate over all of the test suites/contexts
+        _.each(that.test.parent.suites, function process(suite){
+          // Attach an afterAll listener that performs the cleanup
+          suite.afterAll(function resetClient(){
+            console.log('RESET TO ABOUT:BLANK');
+            client.url('about:blank');
+          });
+        });
       });
     });
-
 
     // run tests inside here
     _.each(suites, function(suite){
       suite(client);
     });
 
-    after(endBrowser);
+    after(function(done){
+      client.end(function callbackAfterClientEnd(err){
+        if(err) console.log(err);
+        console.log('END SESSION');
+        client.endAll(function callbackAfterClientEndAll(err){
+          if(err) console.log(err);
+          console.log('END ALL SESSIONS');
+          client.call(done);
+        })
+      });
+    });
 
   });
 
