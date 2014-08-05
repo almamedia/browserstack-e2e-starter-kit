@@ -12,7 +12,7 @@ module.exports = function(client) {
      * Opening the website is the slowest test
      * as it means starting up the machine/browser as well
      */
-    it('should open the website',function(done) {
+    it('should open the page',function(done) {
       client
       .url('https://github.com/')
       .call(done);

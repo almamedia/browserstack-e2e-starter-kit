@@ -100,7 +100,7 @@ For testing against local headless PhantomJS browser (without using BrowserStack
 Writing tests
 -------------
 
-Test suites must be stored in `./test/suites/`-folder.
+Test suites must be stored in `./test/suites/`-folder. If you wish, you can also organize your test suites into folders (maximun 2 levels deep).
 
 A test suite must exposed as CommonJS module function which takes the ([webdriver.io](http://webdriver.io/)) `client` as an argument. Suite must have at least one MochaJS `describe`-block inside them.
 
@@ -140,5 +140,4 @@ FAQ
 Todo
 ----
 - Optional screenshots on test fails
-- Ability to organize suites into subfolders
 - Open source

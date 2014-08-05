@@ -1,10 +1,10 @@
 /*
- * Test suite for testing Google search functionality
+ * Test suite for testing Github homepage
  * =============================================================================
  */
 module.exports = function(client) {
 
-  describe('Google search', function() {
+  describe('Github Help', function() {
 
     /*
      * Test # 1
@@ -14,19 +14,20 @@ module.exports = function(client) {
      */
     it('should open the page',function(done) {
       client
-      .url('https://google.com/?hl=en')
+      .url('https://help.github.com/')
       .call(done);
     });
+
 
     /*
      * Test # 2
      * -------------------------------------------------------------------------
      */
-    it('should have a search input field visible',function(done) {
+    it('should have a title',function(done) {
       client
-      .isVisible('input[name=q]', function(err, isItVisible){
+      .getTitle(function(err, title) {
         should.not.exist(err);
-        isItVisible.should.be.true;
+        title.should.equal('GitHub Help');
       })
       .call(done);
     });
@@ -35,16 +36,11 @@ module.exports = function(client) {
      * Test # 3
      * -------------------------------------------------------------------------
      */
-    it('should open the search results page after submitting search form',function(done) {
+    it('should have a visible <body>',function(done) {
       client
-      .setValue('input[name=q]', 'Cthulhu', function(err){
+      .isVisible('body', function(err, isItVisible){
         should.not.exist(err);
-        //isItVisible.should.be.true;
-      })
-      .click('[name="btnG"]')
-      .pause(1000)
-      .getTitle(function(err,title) {
-          title.should.equal('Cthulhu - Google Search');
+        isItVisible.should.be.true;
       })
       .call(done);
     });

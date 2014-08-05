@@ -155,12 +155,25 @@ _.each(browsers, function(browser) {
     });
 
     /*
+     * Check that there are some tests to be run
+     * -------------------------------------------------------------------------
+     */
+    if(Object.keys(suites).length<1) throw new Error('No test suites found.');
+
+    /*
      * Run all test suites recursively
      * -------------------------------------------------------------------------
      * - Actually generates the test suites runtime
+     * - TODO: figure out if there's some "classy" way of looping the tests...
      */
     _.each(suites, function(suite){
-      suite(client);
+      if (typeof suite === 'function') return suite(client);
+      _.each(suite, function(suiteItem){
+        if (typeof suiteItem === 'function') return suiteItem(client);
+        _.each(suiteItem, function(suiteSubItem){
+          if (typeof suiteSubItem === 'function') return suiteSubItem(client);
+        });
+      });
     });
 
     /*
