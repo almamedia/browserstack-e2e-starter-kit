@@ -114,9 +114,21 @@ _.each(browsers, function(browser) {
 
   describe(labelString, function(){
 
+    this.timeout(60*60*1000);
+
+    before(function(){
+
+      //screenshotHandler.setup('./screenshots');
+
+      client.init();
+    });
+
     // run tests inside here
     homePageTest(client, labelString);
 
+    after(function(done) {
+      client.end(done);
+    });
 
 
 //    afterEach(function(done) {

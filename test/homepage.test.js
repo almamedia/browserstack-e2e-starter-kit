@@ -2,14 +2,7 @@ module.exports = function(client) {
 
   describe('Github homepage', function() {
 
-    this.timeout(60*60*1000);
 
-    before(function(){
-
-      //screenshotHandler.setup('./screenshots');
-
-      client.init();
-    });
 
     /*
      * Test #
@@ -65,9 +58,7 @@ module.exports = function(client) {
       .call(done);
     });
 
-    after(function(done) {
-      client.end(done);
-    });
+
 
 
 
