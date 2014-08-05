@@ -3,6 +3,7 @@ BrowserStack e2e starter
 
 [MochaJS](http://visionmedia.github.io/mocha) end-to-end tests against multiple browsers available at [BrowserStack](http://browserstack.com) or locally against [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html) & [PhantomJS](http://phantomjs.org/download.html).
 
+Here's what running test suites looks like:
 ![Example output](/example-output.png "Example output")
 
 
