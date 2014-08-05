@@ -28,13 +28,6 @@ if (phantom) {
       "os"            : os.type()+' '+os.arch(),
       "os_version"    : os.release(),
       "resolution"    : "headless"
-    },
-    {
-      "browserName"   : "phantom",
-      "version"       : String(shell.exec('phantomjs -v', {silent:true}).output).trim() || 'version unknown',
-      "os"            : os.type()+' '+os.arch(),
-      "os_version"    : os.release(),
-      "resolution"    : "headless"
     }
   ]
 
