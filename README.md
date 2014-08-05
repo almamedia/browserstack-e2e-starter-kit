@@ -7,8 +7,13 @@ Here's what running test suites looks like:
 ![Example output](/example-output.png "Example output")
 
 
+Table of Contents
+-----------------
+|[**Installation**](#installation--usage)| [**Configuring Browsers**](#configuring-browsers) | [**PhantomJS**](#phantomjs) |  [**Writing tests**](#writing-tests)  | [**FAQ**](#faq)  |  [**TODO**](#todo)  |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 
-Has still some [**TODOs**](#todo)!
+
+<br/><br/>
 
 
 
