@@ -1,6 +1,6 @@
 module.exports = function(client) {
 
-  describe('Github homepage', function() {
+  describe('Google homepage', function() {
 
     /*
      * Test #
@@ -10,7 +10,7 @@ module.exports = function(client) {
     it('should open the website',function(done) {
       this.timeout(10000);
       client
-      .url('https://github.com/')
+      .url('https://google.com/')
       .call(done);
     });
 
@@ -23,7 +23,7 @@ module.exports = function(client) {
       client
       .getTitle(function(err, title) {
         should.not.exist(err);
-        title.should.equal('GitHub · Build software better, together.');
+        title.should.equal('Google');
       })
       .call(done);
     });
@@ -37,21 +37,6 @@ module.exports = function(client) {
       .getTagName('body', function(err, tagName){
         should.not.exist(err);
         tagName.should.equal('body');
-      })
-      .call(done);
-    });
-
-
-    /*
-     * Test #
-     * ---------------------------------------------------------------------------
-     */
-    it('should have a properly sized logo',function(done) {
-      client
-      .getElementSize('.header-logo-wordmark', function(err, result) {
-        should.not.exist(err);
-        result.height.should.equal(32);
-        //result.width.should.equal(89);
       })
       .call(done);
     });

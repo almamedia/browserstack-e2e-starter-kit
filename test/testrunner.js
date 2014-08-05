@@ -16,6 +16,7 @@ global.should = require('chai').should();
 
 
 var homePageTest = require('./homepage.test.js');
+var googleTest = require('./example2.test.js');
 
 var browsers = [];
 
@@ -112,33 +113,41 @@ _.each(browsers, function(browser) {
     });
   }
 
+  function initBrowser() {
+    client.init();
+  }
+
+  function resetBrowser() {
+    client.url('about:blank');
+  }
+
+  function endBrowser() {
+    client.end();
+  }
+
   describe(labelString, function(){
 
     this.timeout(60*60*1000);
 
-    before(function(){
+    before(initBrowser);
 
-      //screenshotHandler.setup('./screenshots');
-
-      client.init();
+    // https://github.com/visionmedia/mocha/issues/911
+    // Before anything else is run
+    before(function () {
+      // Iterate over all of the test suites/contexts
+      this.test.parent.suites.forEach(function bindCleanup (suite) {
+        // Attach an beforeAll listener that performs the cleanup
+        suite.beforeAll(resetBrowser);
+      });
     });
+
 
     // run tests inside here
-    homePageTest(client, labelString);
+    homePageTest(client);
 
-    after(function(done) {
-      client.end(done);
-    });
+    googleTest(client);
 
-
-//    afterEach(function(done) {
-//
-//      if(this.currentTest.state === 'failed') {
-//        //screenshotHandler.take(client, this.currentTest.title);
-//      }
-//      done();
-//    });
-
+    after(endBrowser);
 
   });
 
