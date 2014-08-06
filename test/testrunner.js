@@ -152,11 +152,14 @@ _.each(browsers, function(browser) {
       client.init(function callbackAfterClientInit(){
         _.each(that.test.parent.suites, function process(suite){
           suite.afterAll(function resetClient(){
+            client.deleteCookie();
             client.url('about:blank');
           });
         });
       });
     });
+
+
 
     /*
      * Check that there are some tests to be run
