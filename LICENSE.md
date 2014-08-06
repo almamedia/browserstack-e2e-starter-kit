@@ -1,4 +1,6 @@
-ISC License (ISC) - http://opensource.org/licenses/ISC
+ISC License (ISC)
+=================
+http://opensource.org/licenses/ISC
 
 Copyright (c) 2014, Alma Media
 
