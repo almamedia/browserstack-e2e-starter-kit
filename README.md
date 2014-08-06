@@ -118,7 +118,7 @@ module.exports = function(client) {
 }
 ```
 
-See the provided examples [`github test suite`](test/suites/github/) and [`google-search.testsuite.js`](test/suites/google-search.testsuite.js) for more examples.
+See the provided examples [`google-search.testsuite.js`](test/suites/google-search.testsuite.js) and [`github test suite`](test/suites/github/) for more examples.
 
 
 
