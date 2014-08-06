@@ -11,7 +11,7 @@ BrowserStack e2e starter-kit
 <br/>
 
 
-[MochaJS](http://visionmedia.github.io/mocha) end-to-end tests against multiple browsers available at [BrowserStack](http://browserstack.com) or locally against [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html) & [PhantomJS](http://phantomjs.org/download.html). This is a starter-kit which you can copy to your own projects.
+[MochaJS](http://visionmedia.github.io/mocha) end-to-end tests against multiple browsers available at [BrowserStack](http://browserstack.com) or locally against [Selenium Standalone](http://selenium-release.storage.googleapis.com/index.html) & [PhantomJS](http://phantomjs.org/download.html). **This is a starter-kit which you can copy to your own projects.**
 
 *Here's what running test suites looks like:*
 ![Example output](/example-output.png "Example output")
