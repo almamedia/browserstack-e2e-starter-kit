@@ -56,7 +56,7 @@ npm test
 
 ### On Continuous Integration
 
-Set an environment variable `export CI=true` in your continuous integration environment or just prepend the variable before the test command:
+Set an environment variable `export CI=true` (note: e.g. Travis-CI [sets this automatically](http://docs.travis-ci.com/user/ci-environment/#Environment-variables)) in your continuous integration environment or just prepend the variable before the test command:
 
 ```sh
 CI=true npm test
