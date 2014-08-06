@@ -143,5 +143,4 @@ FAQ
 
 Todo
 ----
-- Feature: Delete all cookies after each test suite run, see [issue #1](https://github.com/almamedia/browserstack-e2e-starter-kit/issues/1)
 - Open source
