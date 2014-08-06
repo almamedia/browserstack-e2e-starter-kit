@@ -1,7 +1,7 @@
 {
-  "name": "browserstackTesting",
-  "version": "0.0.0",
-  "description": "",
+  "name": "browserstack-e2e-starter-kit",
+  "version": "0.0.1",
+  "description": "Starter kit for using BrowserStack with Webdriver.io and MochaJS to do e2e testing on BrowserStack",
   "main": "index.js",
   "scripts": {
     "test": "[ ${CI} ] && mocha --reporter=xunit || mocha"
@@ -9,7 +9,7 @@
   "engines": {
     "node": ">=0.10.26"
   },
-  "author": "",
+  "author": "Ari Palo / Alma Media",
   "license": "ISC",
   "dependencies": {
     "chai": "^1.9.1",
