@@ -2,7 +2,7 @@
   "name": "browserstack-e2e-starter-kit",
   "version": "0.0.1",
   "description": "Starter kit for using BrowserStack with Webdriver.io and MochaJS to do e2e testing on BrowserStack",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "test": "[ ${CI} ] && mocha --reporter=xunit || mocha"
   },
