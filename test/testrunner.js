@@ -10,6 +10,7 @@
  */
 var webdriverjs = require('webdriverjs');
 var os = require('os');
+var path = require('path');
 var _ = require('lodash');
 var shell = require('shelljs');
 global.should = require('chai').should();//exposed as global for the suites
@@ -69,7 +70,7 @@ if (!phantom && process.env.BROWSERSTACK_ACCESS_KEY == null) {
  * -----------------------------------------------------------------------------
  * - It's one damn ugly function, but who cares...
  */
-function browserLabel(browser) {
+function generateBrowserLabel(browser) {
   var labelString = '';
   labelString += String(browser['browserName']).trim().toLowerCase() == 'ie' ? 'Internet Explorer' : browser['browserName'];
   if(browser['version'] ){
@@ -126,7 +127,9 @@ _.each(browsers, function(browser) {
 
   var client = setupClient(browser);
 
-  describe(browserLabel(browser), function(){
+  var browserLabel = generateBrowserLabel(browser);
+
+  describe(browserLabel, function(){
 
     /*
      * Set time out for all suites (within on browser)

@@ -139,5 +139,4 @@ FAQ
 
 Todo
 ----
-- Optional screenshots on test fails
 - Open source
