@@ -141,6 +141,7 @@ _.each(browsers, function(browser) {
     /*
      * Reset browser after each suite
      * -------------------------------------------------------------------------
+     * - TODO: delete all cookies as well: https://github.com/webdriverio/webdriverio/issues/262
      * - resets the client to url about:blank after every test suite
      * - patch "afterEachDescribe"
      *   - stolen from: https://github.com/visionmedia/mocha/issues/911
