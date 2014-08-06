@@ -130,7 +130,7 @@ FAQ
 
   No, your website is probably OK. Running a test against BrowserStack service means that when the test starts, BrowserStack has to start up a machine (or probably just a simulator) and open up a new browser before it gets to the part where the website starts to load. That's why the tests take some time.
 
-- **Can I run these BrowserStack tests in paraller?**
+- **Can I run these BrowserStack tests in parallel?**
 
   No you can't, at least without heavy refactor. Also by design [MochaJS](http://visionmedia.github.io/mocha) runs all the tests serially. You probably shouldn't be running end-to-end tests every minute, so the fact these tests take some time shouldn't be a problem. If you absolutely require parallel runs you should check out something like [this](https://github.com/browserstack/selenium-runner).
 
