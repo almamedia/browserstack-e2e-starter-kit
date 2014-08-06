@@ -76,7 +76,7 @@ function generateBrowserLabel(browser) {
   if(browser['version'] ){
     labelString += ' ['+browser['version']+']';
   } else if(!browser['device']) {
-    labelString += ' [latest stable version]';
+    labelString += ' [latest stable]';
   }
   labelString += ' '+browser['os'];
   labelString += browser['os_version'] ? ' '+browser['os_version'] : '';
