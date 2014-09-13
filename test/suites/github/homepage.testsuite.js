@@ -45,20 +45,6 @@ module.exports = function(client) {
       .call(done);
     });
 
-
-    /*
-     * Test # 4
-     * -------------------------------------------------------------------------
-     */
-    it('should have a properly sized logo',function(done) {
-      client
-      .getElementSize('.header-logo-wordmark', function(err, result) {
-        should.not.exist(err);
-        result.height.should.equal(32);
-      })
-      .call(done);
-    });
-
   });
 
 }
