@@ -39,7 +39,6 @@ module.exports = function(client) {
       client
       .setValue('input[name=q]', 'Cthulhu', function(err){
         should.not.exist(err);
-        //isItVisible.should.be.true;
       })
       .click('[name="btnG"]')
       .pause(1000)
