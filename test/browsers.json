@@ -19,10 +19,9 @@
     "resolution"    : "1920x1080"
   },
   {
-   "browserName"    : "iPad",
-   "os"             : "iOS",
-   "os_version"     : "7.0",
-   "device"         : "iPad 3rd (7.0)",
+   "browserName"    : "Android",
+   "os_version"     : "4.1",
+   "device"         : "Google Nexus 7",
    "deviceOrientation": "portrait"
   }
 ]
