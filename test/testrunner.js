@@ -73,6 +73,7 @@ if (!phantom && process.env.BROWSERSTACK_ACCESS_KEY == null) {
 var browserStackTunnel;
 var myTunnelIdentifier = 'E2E-starter-kit-example';
 var browserstackbinfolder = path.resolve('./');
+var timestamp = Date.now();
 
 if (!phantom) {
 
@@ -142,7 +143,7 @@ function setupClient(browser) {
     browser['browserstack.debug'] = true;
     browser['browserstack.local'] = true;
     browser['browserstack.localIdentifier'] = myTunnelIdentifier;
-    browser['build'] = 'Example '+Date.now();
+    browser['build'] = 'Example '+timestamp;
     browser['project'] = 'E2E-starter-kit';
 
     client = webdriverjs.remote({
