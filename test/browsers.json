@@ -6,12 +6,6 @@
     "resolution"    : "1024x768"
   },
   {
-    "browserName"   : "Chrome",
-    "os"            : "OS X",
-    "os_version"    : "Mavericks",
-    "resolution"    : "1280x1024"
-  },
-  {
    "browserName"    : "Android",
    "os"             : "Android",
    "os_version"     : "4.1",
