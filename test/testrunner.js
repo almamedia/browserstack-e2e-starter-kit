@@ -142,7 +142,7 @@ function setupClient(browser) {
     browser['browserstack.debug'] = true;
     browser['browserstack.local'] = true;
     browser['browserstack.localIdentifier'] = myTunnelIdentifier;
-    browser['build'] = 'Example';
+    browser['build'] = 'Example '+Date.now();
     browser['project'] = 'E2E-starter-kit';
 
     client = webdriverjs.remote({
