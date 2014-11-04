@@ -12,13 +12,6 @@
     "resolution"    : "1280x1024"
   },
   {
-    "browserName"   : "IE",
-    "version"       : "11.0",
-    "os"            : "Windows",
-    "os_version"    : "8.1",
-    "resolution"    : "1920x1080"
-  },
-  {
    "browserName"    : "Android",
    "os"             : "Android",
    "os_version"     : "4.1",
