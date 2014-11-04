@@ -40,10 +40,11 @@ module.exports = function(client) {
       .setValue('input[name=q]', 'Cthulhu', function(err){
         should.not.exist(err);
       })
-      .click('[name="btnG"]')
-      .pause(1000)
-      .getTitle(function(err,title) {
+      .submitForm('form[action="/search"]', function(err){
+        should.not.exist(err);
+        client.getTitle(function(err,title) {
           title.should.equal('Cthulhu - Google Search');
+        })
       })
       .call(done);
     });
