@@ -40,11 +40,11 @@ module.exports = function(client) {
       .setValue('input[name=q]', 'Cthulhu', function(err){
         should.not.exist(err);
       })
-      .submitForm('form[action="/search"]', function(err){
-        should.not.exist(err);
-        client.getTitle(function(err,title) {
-          title.should.equal('Cthulhu - Google Search');
-        })
+      .submitForm('form[action="/search"]')
+      .pause(1000)
+      .click('[name="btnG"]')//google JS functionality requires "double" form send for page title to update
+      .getTitle(function(err,title) {
+        title.should.equal('Cthulhu - Google Search');
       })
       .call(done);
     });
