@@ -140,7 +140,3 @@ FAQ
   I really like using [MochaJS](http://visionmedia.github.io/mocha) for all my testing (I have done unit testing and API testing with it before) and there wasn't (at least I had not found) any **good** examples of testing with Mocha against multiple browsers on BrowserStack. The huge amount of choice (and noise) related to Selenium testing is also a factor that really slowed me down at first. Then I found [webdriver.io](http://webdriver.io/) which looks really promising as it has nice API & syntax and by default uses [CSS-selectors](http://docs.webplatform.org/wiki/css/selectors) well-known by front-end developers (instead of XPath or some weird methods like `driver.findElement(webdriver.By.name('q'));` as does the Selenium's own webdriverjs project). This starter-kit was mainly developed for myself and my work, but hopefully it'll help others to get started with Mocha+BrowserStack as well!
   &mdash; [@aripalo](http://twitter.com/aripalo)
 
-
-Todo
-----
-- Open source
